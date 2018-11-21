@@ -5,9 +5,9 @@
 #include "Primitive.h"
 
 // TODO 1: Add Bullet common include btBulletDynamicsCommon.h
-
 #include "Bullet/include/btBulletDynamicsCommon.h"
 
+// Recommended scale is 1.0f == 1 meter, no less than 0.2 objects
 #define GRAVITY btVector3(0.0f, -10.0f, 0.0f) 
 
 class DebugDrawer;
@@ -18,6 +18,7 @@ public:
 	ModulePhysics3D(Application* app, bool start_enabled = true);
 	~ModulePhysics3D();
 
+	bool Init();
 	bool Start();
 	update_status PreUpdate(float dt);
 	update_status Update(float dt);
@@ -33,15 +34,13 @@ private:
 	btBroadphaseInterface*				broad_phase;
 	btSequentialImpulseConstraintSolver* solver;
 	btDiscreteDynamicsWorld*			world;
-	DebugDrawer* debug_draw;
+	DebugDrawer*						debug_draw;
 };
 
-
-// Uncomment the debug Drawer once you finish TODO 4
 class DebugDrawer : public btIDebugDraw
 {
 public:
-	DebugDrawer() : line(0,0,0)
+	DebugDrawer() : line(0, 0, 0)
 	{}
 
 	void drawLine(const btVector3& from, const btVector3& to, const btVector3& color);
