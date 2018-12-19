@@ -41,4 +41,29 @@ public:
 
 	PhysMotor3D* left_wheel;
 	PhysMotor3D* right_wheel;
+
+	//walls
+	PhysBody3D* pb_wall1;
+	Cube wall1;
+
+	PhysBody3D* pb_wall2;
+	Cube wall2;
+
+	PhysBody3D* pb_wall3;
+	Cube wall3;
+
+	PhysBody3D* pb_wall4;
+	Cube wall4;
+
+	PhysBody3D* pb_wall5;
+	Cube wall5;
+
+	PhysBody3D* pb_wall6;
+	Cube wall6;
+
+	PhysBody3D* pb_wall7;
+	Cube wall7;
+
+	PhysBody3D* pb_wall8;
+	Cube wall8;
 };
