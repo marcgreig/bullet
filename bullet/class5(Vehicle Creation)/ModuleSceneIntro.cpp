@@ -20,6 +20,25 @@ bool ModuleSceneIntro::Start()
 	App->camera->Move(vec3(1.0f, 1.0f, 0.0f));
 	App->camera->LookAt(vec3(3, 0, 0));
 
+	//Map Door
+
+	pivot.radius = 2.0f;
+	pivot.height = 4.0f;
+	pivot.SetPos(17,2,78);
+	pb_pivot = App->physics->AddBody(pivot, 0.0f);
+
+	door1.size = { 12, 4, 4 };
+	door1.SetPos(17, 2, 69);
+	pb_door1 = App->physics->AddBody(door1, 99999.0f);
+
+	door2.size = { 12, 4, 4 };
+	door2.SetPos(17, 2, 87);
+	pb_door2 = App->physics->AddBody(door2, 99999.0f);
+
+	App->physics->AddConstraintHinge(*pb_door1, *pb_pivot, vec3(-9, 0, 0), vec3(0, 0, 0), vec3(0, 1, 0), vec3(0, 1, 0));
+
+	App->physics->AddConstraintHinge(*pb_door2, *pb_pivot, vec3(9, 0, 0), vec3(0, 0, 0), vec3(0, 1, 0), vec3(0, 1, 0));
+
 	//Map Walls
 	wall1.size = { 30, 4, 4 };
 	wall1.SetPos(0, 2, 0);
@@ -72,6 +91,15 @@ update_status ModuleSceneIntro::Update(float dt)
 	p.axis = true;
 	p.Render();
 	
+	pb_pivot->GetTransform(&pivot.transform);
+	pivot.Render();
+
+	pb_door1->GetTransform(&door1.transform);
+	door1.Render();
+
+	pb_door2->GetTransform(&door2.transform);
+	door2.Render();
+
 
 	pb_wall1->GetTransform(&wall1.transform);
 	wall1.Render();

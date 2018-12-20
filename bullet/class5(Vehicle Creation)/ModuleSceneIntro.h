@@ -42,6 +42,16 @@ public:
 	PhysMotor3D* left_wheel;
 	PhysMotor3D* right_wheel;
 
+	//door
+	PhysBody3D* pb_pivot;
+	Cylinder pivot;
+
+	PhysBody3D* pb_door1;
+	Cube door1;
+
+	PhysBody3D* pb_door2;
+	Cube door2;
+
 	//walls
 	PhysBody3D* pb_wall1;
 	Cube wall1;
