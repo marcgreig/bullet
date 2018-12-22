@@ -4,6 +4,7 @@
 #include "Primitive.h"
 #include "PhysVehicle3D.h"
 #include "PhysBody3D.h"
+#include "Color.h"
 
 ModulePlayer::ModulePlayer(Application* app, bool start_enabled) : Module(app, start_enabled), vehicle(NULL)
 {
@@ -19,8 +20,11 @@ bool ModulePlayer::Start()
 {
 	LOG("Loading player");
 
-	VehicleInfo car2;
 	VehicleInfo car1;
+	VehicleInfo car2;
+
+	car1.color = Red;
+	car2.color = Green;
 
 	// Car properties ----------------------------------------
 	car1.chassis_size.Set(2, 2, 4);
@@ -163,8 +167,10 @@ bool ModulePlayer::Start()
 
 	vehicle = App->physics->AddVehicle(car1);
 	vehicle->SetPos(0, 0, 15);
+	vehicle->is_sensor = true;
 	vehicle2 = App->physics->AddVehicle(car2);
 	vehicle2->SetPos(0, 0, 10);
+	vehicle2->collision_listeners.add(this);
 	
 	return true;
 }
@@ -244,6 +250,7 @@ update_status ModulePlayer::Update(float dt)
 
 	return UPDATE_CONTINUE;
 }
+
 
 
 

@@ -30,6 +30,9 @@ public:
 	Sphere s_snake2[MAX_SNAKE];
 	*/
 
+	PhysBody3D* pb_goal;
+	Sphere goal;
+
 	PhysBody3D* pb_chassis;
 	Cube p_chassis;
 

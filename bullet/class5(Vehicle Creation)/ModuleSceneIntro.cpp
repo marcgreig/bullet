@@ -20,6 +20,14 @@ bool ModuleSceneIntro::Start()
 	App->camera->Move(vec3(1.0f, 1.0f, 0.0f));
 	App->camera->LookAt(vec3(10, 2, 17));
 
+	//Goal
+	goal.radius = 5.0f;
+	goal.SetPos(30, 3 , 120);
+	goal.color = Blue;
+	pb_goal = App->physics->AddBody(goal, 1.0f);
+
+	pb_goal->collision_listeners.add(this);
+
 	//Map Door
 
 	pivot.radius = 2.0f;
@@ -43,7 +51,6 @@ bool ModuleSceneIntro::Start()
 	wall1.size = { 30, 4, 4 };
 	wall1.SetPos(0, 2, 0);
 	pb_wall1 = App->physics->AddBody(wall1, 0.0f);
-	//pb_wall1->collision_listeners.add(this);
 
 	wall2.size = { 4, 4, 60 };
 	wall2.SetPos(17, 2, 28);
@@ -90,7 +97,11 @@ update_status ModuleSceneIntro::Update(float dt)
 	Plane p(0, 1, 0, 0);
 	p.axis = true;
 	p.Render();
+
 	
+	pb_goal->GetTransform(&goal.transform);
+	goal.Render();
+
 	pb_pivot->GetTransform(&pivot.transform);
 	pivot.Render();
 
@@ -131,5 +142,9 @@ update_status ModuleSceneIntro::Update(float dt)
 
 void ModuleSceneIntro::OnCollision(PhysBody3D* body1, PhysBody3D* body2)
 {
+	if (body1 == pb_goal || body2 == pb_goal) 
+	{
+		goal.color = White;
+	}
 }
 
