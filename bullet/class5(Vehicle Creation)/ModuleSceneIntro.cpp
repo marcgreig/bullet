@@ -17,8 +17,8 @@ bool ModuleSceneIntro::Start()
 	LOG("Loading Intro assets");
 	bool ret = true;
 
-	App->camera->Move(vec3(1.0f, 1.0f, 0.0f));
-	App->camera->LookAt(vec3(10, 2, 17));
+	App->camera->Move(vec3(116.156799f, 115.057465f, -61.1803207f));
+	App->camera->LookAt(vec3(25, -8, 27));
 
 	//Goal
 	goal.radius = 5.0f;

@@ -166,8 +166,7 @@ bool ModulePlayer::Start()
 	car2.wheels[3].steering = false;
 
 	vehicle = App->physics->AddVehicle(car1);
-	vehicle->SetPos(0, 0, 15);
-	vehicle->is_sensor = true;
+	vehicle->SetPos(0, -10, 15);
 	vehicle2 = App->physics->AddVehicle(car2);
 	vehicle2->SetPos(0, 0, 10);
 	vehicle2->collision_listeners.add(this);
@@ -189,48 +188,60 @@ update_status ModulePlayer::Update(float dt)
 	turn1 = acceleration1 = brake1 = 0.0f;
 	turn2 = acceleration2 = brake2 = 0.0f;
 
-	if(App->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT)
+	if(App->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT)
 	{
 		acceleration1 = MAX_ACCELERATION;
 	}
 
-	if(App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT)
+	if(App->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT)
 	{
 		if(turn1 < TURN_DEGREES)
 			turn1 +=  TURN_DEGREES;
 	}
 
-	if(App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
+	if(App->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT)
 	{
 		if(turn1 > -TURN_DEGREES)
 			turn1 -= TURN_DEGREES;
 	}
 
-	if(App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
+	if(App->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT)
 	{
 		brake1 = BRAKE_POWER;
 	}
 
-	if (App->input->GetKey(SDL_SCANCODE_I) == KEY_REPEAT)
+	if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT)
 	{
 		acceleration2 = MAX_ACCELERATION;
 	}
 
-	if (App->input->GetKey(SDL_SCANCODE_J) == KEY_REPEAT)
+	if (App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT)
 	{
 		if (turn2 < TURN_DEGREES)
 			turn2 += TURN_DEGREES;
 	}
 
-	if (App->input->GetKey(SDL_SCANCODE_L) == KEY_REPEAT)
+	if (App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
 	{
 		if (turn2 > -TURN_DEGREES)
 			turn2 -= TURN_DEGREES;
 	}
 
-	if (App->input->GetKey(SDL_SCANCODE_K) == KEY_REPEAT)
+	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
 	{
 		brake2 = BRAKE_POWER;
+	}
+
+	if (App->input->GetKey(SDL_SCANCODE_E) == KEY_REPEAT)
+	{
+		vehicle->SetPos(0, 0, 15);
+		//vehicle->SetTransform();
+	}
+
+	if (App->input->GetKey(SDL_SCANCODE_0) == KEY_REPEAT)
+	{
+		vehicle2->SetPos(0, 0, 10);
+		//vehicle2->SetTransform();
 	}
 
 	vehicle->ApplyEngineForce(acceleration1);
