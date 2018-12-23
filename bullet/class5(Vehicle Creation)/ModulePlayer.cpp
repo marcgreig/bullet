@@ -188,6 +188,12 @@ update_status ModulePlayer::Update(float dt)
 	turn1 = acceleration1 = brake1 = 0.0f;
 	turn2 = acceleration2 = brake2 = 0.0f;
 
+	mat4x4 Starting_mat = mat4x4(
+		1.0f, 0.0f, 0.0f, 0.0f,
+		0.0f, -1.0f, 0.0f, 0.0f,
+		0.0f, 0.0f, 1.0f, 0.0f,
+		0.0f, 0.0f, 0.0f, -1.0f);
+
 	if(App->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT)
 	{
 		acceleration1 = MAX_ACCELERATION;
@@ -234,11 +240,15 @@ update_status ModulePlayer::Update(float dt)
 
 	if (App->input->GetKey(SDL_SCANCODE_E) == KEY_REPEAT)
 	{
+		vehicle->vehicle->getRigidBody()->setLinearVelocity(btVector3(0, 0, 0));
+		vehicle->SetTransform(Starting_mat.M);
 		vehicle->SetPos(5, 0, 10);
 	}
 
-	if (App->input->GetKey(SDL_SCANCODE_0) == KEY_REPEAT)
+	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_REPEAT)
 	{
+		vehicle2->vehicle->getRigidBody()->setLinearVelocity(btVector3(0, 0, 0));
+		vehicle2->SetTransform(Starting_mat.M);
 		vehicle2->SetPos(-5, 0, 10);
 
 	}
