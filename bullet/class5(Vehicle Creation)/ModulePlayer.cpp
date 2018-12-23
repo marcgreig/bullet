@@ -166,9 +166,9 @@ bool ModulePlayer::Start()
 	car2.wheels[3].steering = false;
 
 	vehicle = App->physics->AddVehicle(car1);
-	vehicle->SetPos(0, -10, 15);
+	vehicle->SetPos(5, 0, 10);
 	vehicle2 = App->physics->AddVehicle(car2);
-	vehicle2->SetPos(0, 0, 10);
+	vehicle2->SetPos(-5, 0, 10);
 	vehicle2->collision_listeners.add(this);
 	
 	return true;
@@ -234,14 +234,13 @@ update_status ModulePlayer::Update(float dt)
 
 	if (App->input->GetKey(SDL_SCANCODE_E) == KEY_REPEAT)
 	{
-		vehicle->SetPos(0, 0, 15);
-		//vehicle->SetTransform();
+		vehicle->SetPos(5, 0, 10);
 	}
 
 	if (App->input->GetKey(SDL_SCANCODE_0) == KEY_REPEAT)
 	{
-		vehicle2->SetPos(0, 0, 10);
-		//vehicle2->SetTransform();
+		vehicle2->SetPos(-5, 0, 10);
+
 	}
 
 	vehicle->ApplyEngineForce(acceleration1);
