@@ -261,6 +261,8 @@ update_status ModulePlayer::Update(float dt)
 	vehicle2->Turn(turn2);
 	vehicle2->Brake(brake2);
 
+	CheckWinner();
+
 	vehicle->Render();
 	vehicle2->Render();
 
@@ -270,6 +272,35 @@ update_status ModulePlayer::Update(float dt)
 
 	return UPDATE_CONTINUE;
 }
+
+
+int ModulePlayer::CheckWinner()
+{
+	int ret = 0;
+
+
+	vec3 posCar1 = vehicle->GetPos();
+	vec3 posCar2 = vehicle2->GetPos();
+
+	if (posCar1.z >= 134)
+	{
+		LOG("Red Player Wins");
+		ret = 1;
+		return ret;
+		
+	}
+	if (posCar2.z >= 134) 
+	{
+		LOG("Green Player Wins");
+		ret = 2;
+		return ret;
+	}
+	
+	return ret;
+	
+}
+
+
 
 
 

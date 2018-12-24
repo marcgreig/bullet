@@ -19,10 +19,11 @@ bool ModuleSceneIntro::Start()
 
 	App->camera->Move(vec3(95,95,-50));
 	App->camera->LookAt(vec3(15, -8, 57));
-
+	
+	
 	//Goal
 	goal.radius = 5.0f;
-	goal.SetPos(30, 3 , 120);
+	goal.SetPos(35, 3 , 138);
 	goal.color = Blue;
 	pb_goal = App->physics->AddBody(goal, 1.0f);
 
@@ -76,9 +77,25 @@ bool ModuleSceneIntro::Start()
 	wall7.SetPos(17, 2, 114);
 	pb_wall7 = App->physics->AddBody(wall7, 0.0f);
 	
-	wall8.size = { 40,4,4 };
-	wall8.SetPos(35, 2, 136);
+	wall8.size = { 12,4,4 };
+	wall8.SetPos(49, 2, 136);
 	pb_wall8 = App->physics->AddBody(wall8, 0.0f);
+
+	wall9.size = { 12,4,4 };
+	wall9.SetPos(21, 2, 136);
+	pb_wall9 = App->physics->AddBody(wall9, 0.0f);
+
+	wall10.size = { 4,4,8 };
+	wall10.SetPos(25,2,142);
+	pb_wall10 = App->physics->AddBody(wall10, 0.0f);
+
+	wall11.size = { 4,4,8 };
+	wall11.SetPos(45, 2, 142);
+	pb_wall11 = App->physics->AddBody(wall11, 0.0f);
+
+	wall12.size = { 24,4,4 };
+	wall12.SetPos(35, 2, 148);
+	pb_wall12 = App->physics->AddBody(wall12, 0.0f);
 
 	return ret;
 }
@@ -97,7 +114,6 @@ update_status ModuleSceneIntro::Update(float dt)
 	Plane p(0, 1, 0, 0);
 	p.axis = true;
 	p.Render();
-
 	
 	pb_goal->GetTransform(&goal.transform);
 	goal.Render();
@@ -135,7 +151,18 @@ update_status ModuleSceneIntro::Update(float dt)
 	
 	pb_wall8->GetTransform(&wall8.transform);
 	wall8.Render();
-	
+
+	pb_wall9->GetTransform(&wall9.transform);
+	wall9.Render();
+
+	pb_wall10->GetTransform(&wall10.transform);
+	wall10.Render();
+
+	pb_wall11->GetTransform(&wall11.transform);
+	wall11.Render();
+
+	pb_wall12->GetTransform(&wall12.transform);
+	wall12.Render();
 
 	return UPDATE_CONTINUE;
 }
@@ -144,7 +171,19 @@ void ModuleSceneIntro::OnCollision(PhysBody3D* body1, PhysBody3D* body2)
 {
 	if (body1 == pb_goal || body2 == pb_goal) 
 	{
-		goal.color = White;
+		goal.color = Red;
+		wall10.color = Red;
+		wall11.color = Red;
+		wall12.color = Red;
+	}
+
+	else if (winner == 2) 
+	{
+		goal.color = Green;
+		wall10.color = Green;
+		wall11.color = Green;
+		wall12.color = Green;
+
 	}
 }
 

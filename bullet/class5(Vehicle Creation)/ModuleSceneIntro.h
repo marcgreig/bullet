@@ -19,7 +19,7 @@ public:
 	update_status Update(float dt);
 	bool CleanUp();
 
-	void OnCollision(PhysBody3D* body1, PhysBody3D* body2);
+	void OnCollision(PhysBody3D * body1, PhysBody3D * body2);
 
 public:
 	/*
@@ -79,4 +79,16 @@ public:
 
 	PhysBody3D* pb_wall8;
 	Cube wall8;
+
+	PhysBody3D* pb_wall9;
+	Cube wall9;
+
+	PhysBody3D* pb_wall10;
+	Cube wall10;
+
+	PhysBody3D* pb_wall11;
+	Cube wall11;
+
+	PhysBody3D* pb_wall12;
+	Cube wall12;
 };

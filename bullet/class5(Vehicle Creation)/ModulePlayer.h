@@ -17,6 +17,7 @@ public:
 
 	bool Start();
 	update_status Update(float dt);
+	int CheckWinner();
 	bool CleanUp();
 
 public:
