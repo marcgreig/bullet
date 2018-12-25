@@ -1,13 +1,18 @@
-BulletGame is a Racing Game developed by Marc Garcia and Arnau Gallofré in order to learn OpenGL and the Bullet library.
+# Bullet Game
 
-Controls:
+BulletGame is a Racing Game developed by Marc Garcia and Arnau GallofrÃ© in order to learn OpenGL and the Bullet library. The main goal of this game is to Push the ball towards the goal before the other player. Also you may have to avoid some obstacles and punish your opponent.
 
--Player 1-
-W, A, D to move and S to brake
-Press E to restart from the beggining
+Github Link: https://github.com/ggaka6god/bullet
 
--Player 2-
-Use the arrows to move like player 1
-Press Return to restart from the begginging
+## Controls:
 
-The goal of the game is to score with the ball in the goal.
+### Player 1 ( Red )
+- W to accelerate.
+- A and D to turn left or right respectively.
+- S to brake.
+- E to restart.
+
+### Player 2 ( Green )
+Same mechanics as the red player:
+- Arrows movement instead of the W,A,S,D keys.
+- Enter to restart.
