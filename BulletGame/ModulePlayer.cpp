@@ -18,6 +18,9 @@ ModulePlayer::~ModulePlayer()
 // Load assets
 bool ModulePlayer::Start()
 {
+	p1time.Start();
+	p2time.Start();
+
 	LOG("Loading player");
 
 	VehicleInfo car1;
@@ -240,16 +243,28 @@ update_status ModulePlayer::Update(float dt)
 
 	if (App->input->GetKey(SDL_SCANCODE_E) == KEY_REPEAT)
 	{
-		vehicle->vehicle->getRigidBody()->setLinearVelocity(btVector3(0, 0, 0));
-		vehicle->SetTransform(Starting_mat.M);
-		vehicle->SetPos(5, 0, 10);
+		if (p1time.Read() > 10*1000) {
+
+			App->audio->PlayFx(1);
+
+			vehicle->vehicle->getRigidBody()->setLinearVelocity(btVector3(0, 0, 0));
+			vehicle->SetTransform(Starting_mat.M);
+			vehicle->SetPos(5, 0, 10);
+
+			p1time.Start();
+		}
 	}
 
 	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_REPEAT)
 	{
-		vehicle2->vehicle->getRigidBody()->setLinearVelocity(btVector3(0, 0, 0));
-		vehicle2->SetTransform(Starting_mat.M);
-		vehicle2->SetPos(-5, 0, 10);
+		if (p2time.Read() > 10 * 1000) {
+
+			vehicle2->vehicle->getRigidBody()->setLinearVelocity(btVector3(0, 0, 0));
+			vehicle2->SetTransform(Starting_mat.M);
+			vehicle2->SetPos(-5, 0, 10);
+
+			p2time.Start();
+		}
 
 	}
 

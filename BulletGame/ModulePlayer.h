@@ -2,6 +2,7 @@
 #include "Module.h"
 #include "Globals.h"
 #include "p2Point.h"
+#include "Timer.h"
 
 struct PhysVehicle3D;
 
@@ -30,4 +31,7 @@ public:
 	float turn2;
 	float acceleration2;
 	float brake2;
+
+	Timer p1time;
+	Timer p2time;
 };

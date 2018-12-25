@@ -3,6 +3,7 @@
 #include "ModuleSceneIntro.h"
 #include "Primitive.h"
 #include "PhysBody3D.h"
+#include "ModuleAudio.h"
 
 ModuleSceneIntro::ModuleSceneIntro(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
@@ -96,6 +97,8 @@ bool ModuleSceneIntro::Start()
 	wall12.size = { 24,4,4 };
 	wall12.SetPos(35, 2, 148);
 	pb_wall12 = App->physics->AddBody(wall12, 0.0f);
+
+
 
 	return ret;
 }
