@@ -24,7 +24,7 @@ bool ModuleSceneIntro::Start()
 	
 	//Goal
 	goal.radius = 5.0f;
-	goal.SetPos(35, 3 , 100);
+	goal.SetPos(35, 3 , 138);
 	goal.color = Blue;
 	pb_goal = App->physics->AddBody(goal, 1.0f);
 
