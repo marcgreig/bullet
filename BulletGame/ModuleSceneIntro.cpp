@@ -18,8 +18,8 @@ bool ModuleSceneIntro::Start()
 	LOG("Loading Intro assets");
 	bool ret = true;
 
-	App->camera->Move(vec3(95,145,-50));
-	App->camera->LookAt(vec3(15, -58, 57));
+	App->camera->Move(vec3(95,95,-50));
+	App->camera->LookAt(vec3(15, -8, 57));
 	
 	
 	//Goal
@@ -166,6 +166,7 @@ update_status ModuleSceneIntro::Update(float dt)
 
 	pb_wall12->GetTransform(&wall12.transform);
 	wall12.Render();
+
 
 	return UPDATE_CONTINUE;
 }

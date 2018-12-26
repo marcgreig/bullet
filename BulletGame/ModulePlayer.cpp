@@ -243,7 +243,7 @@ update_status ModulePlayer::Update(float dt)
 
 	if (App->input->GetKey(SDL_SCANCODE_E) == KEY_REPEAT)
 	{
-		if (p1time.Read() > 10*1000) {
+		if (p1time.Read() > 10 * 1000) {
 
 			App->audio->PlayFx(1);
 
@@ -258,6 +258,8 @@ update_status ModulePlayer::Update(float dt)
 	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_REPEAT)
 	{
 		if (p2time.Read() > 10 * 1000) {
+
+			App->audio->PlayFx(1);
 
 			vehicle2->vehicle->getRigidBody()->setLinearVelocity(btVector3(0, 0, 0));
 			vehicle2->SetTransform(Starting_mat.M);
