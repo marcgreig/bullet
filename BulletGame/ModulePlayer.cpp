@@ -316,7 +316,15 @@ void ModulePlayer::Restart()
 	vehicle2->SetTransform(Starting_mat.M);
 	vehicle2->SetPos(-5, 0, 10);
 
+	App->scene_intro->goal.SetPos(35, 3, 138);
+	App->scene_intro->pb_goal->SetPos(35, 3, 138);
+	App->scene_intro->goal.color = Blue;
+
+	App->scene_intro->wall10.color = White;
+	App->scene_intro->wall11.color = White;
+	App->scene_intro->wall12.color = White;
 }
+
 
 int ModulePlayer::CheckWinner()
 {

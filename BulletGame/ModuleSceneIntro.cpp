@@ -176,6 +176,7 @@ update_status ModuleSceneIntro::Update(float dt)
 void ModuleSceneIntro::OnCollision(PhysBody3D* body1, PhysBody3D* body2)
 {
 	int winner = App->player->CheckWinner();
+	App->player->winner = winner;
 	
 	if (winner == 1)
 	{
@@ -193,9 +194,7 @@ void ModuleSceneIntro::OnCollision(PhysBody3D* body1, PhysBody3D* body2)
 		wall12.color = Green;
 
 	}
-	if (App->player->winner == false) {
-	App->player->winner = true;
-	}
+	
 
 }
 
