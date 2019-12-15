@@ -185,9 +185,16 @@ bool ModulePlayer::CleanUp()
 	return true;
 }
 
+
+
 // Update: draw background
 update_status ModulePlayer::Update(float dt)
 {
+	if (winner == true) {
+
+		return UPDATE_CONTINUE;
+	}
+	else {
 	turn1 = acceleration1 = brake1 = 0.0f;
 	turn2 = acceleration2 = brake2 = 0.0f;
 
@@ -286,10 +293,30 @@ update_status ModulePlayer::Update(float dt)
 	char title[100];
 	sprintf_s(title, "Vehicle1: %.1f Km/h, Vehicle2: %.1f Km/h", vehicle->GetKmh(), vehicle2->GetKmh());
 	App->window->SetTitle(title);
+	
 
+	}
 	return UPDATE_CONTINUE;
 }
 
+void ModulePlayer::Restart()
+{
+	winner = false;
+	mat4x4 Starting_mat = mat4x4(
+		1.0f, 0.0f, 0.0f, 0.0f,
+		0.0f, -1.0f, 0.0f, 0.0f,
+		0.0f, 0.0f, 1.0f, 0.0f,
+		0.0f, 0.0f, 0.0f, -1.0f);
+
+	vehicle->vehicle->getRigidBody()->setLinearVelocity(btVector3(0, 0, 0));
+	vehicle->SetTransform(Starting_mat.M);
+	vehicle->SetPos(5, 0, 10);
+
+	vehicle2->vehicle->getRigidBody()->setLinearVelocity(btVector3(0, 0, 0));
+	vehicle2->SetTransform(Starting_mat.M);
+	vehicle2->SetPos(-5, 0, 10);
+
+}
 
 int ModulePlayer::CheckWinner()
 {

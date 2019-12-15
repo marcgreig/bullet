@@ -20,6 +20,7 @@ public:
 	update_status Update(float dt);
 	int CheckWinner();
 	bool CleanUp();
+	void Restart();
 
 public:
 
@@ -31,6 +32,8 @@ public:
 	float turn2;
 	float acceleration2;
 	float brake2;
+	bool  winner = false;
+	int   id;
 
 	Timer p1time;
 	Timer p2time;

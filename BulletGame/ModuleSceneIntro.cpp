@@ -18,8 +18,8 @@ bool ModuleSceneIntro::Start()
 	LOG("Loading Intro assets");
 	bool ret = true;
 
-	App->camera->Move(vec3(95,95,-50));
-	App->camera->LookAt(vec3(15, -8, 57));
+	App->camera->Move(vec3(-15,55, -30));
+	App->camera->LookAt(vec3(15, -22, 57));
 	
 	
 	//Goal
@@ -167,7 +167,9 @@ update_status ModuleSceneIntro::Update(float dt)
 	pb_wall12->GetTransform(&wall12.transform);
 	wall12.Render();
 
-
+	if (App->input->GetKey(SDL_SCANCODE_R) && App->player->winner==true) {
+		App->player->Restart();
+	}
 	return UPDATE_CONTINUE;
 }
 
@@ -191,5 +193,9 @@ void ModuleSceneIntro::OnCollision(PhysBody3D* body1, PhysBody3D* body2)
 		wall12.color = Green;
 
 	}
+	if (App->player->winner == false) {
+	App->player->winner = true;
+	}
+
 }
 
