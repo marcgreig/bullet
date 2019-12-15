@@ -21,3 +21,6 @@ Same mechanics as the red player:
 - Press R to restart.
 
 #### Press ESC to quit the game.
+
+
+Although the code is forked from another repository, all the source code is developed by https://github.com/marcgreig.
