@@ -1,6 +1,6 @@
 # Bullet Game
 
-BulletGame is a Racing Game developed by Marc Garcia in order to learn OpenGL and the Bullet library. The main goal of this game is to Push the ball towards the goal before the other player. Also you may have to avoid some obstacles and punish your opponent. If a player gets stuck they can go back to the start with one key.
+BulletGame is a Racing Game developed by Marc Garcia in order to learn OpenGL and the Bullet library. The main goal of this game is to Push the ball towards the goal before the other player. Also you may have to avoid some obstacles and punish your opponent. If a player gets stuck they can go back to the start with one key but this feature won't be available until some time has passed since the start to avoid exploits.
 
 Github Link: https://github.com/marcgreig/bullet
 
